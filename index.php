@@ -22,6 +22,10 @@ $routes = [
     'service-areas'    => 'service-areas.php',
     'shipping-policy'  => 'page.php',
     'return-policy'    => 'page.php',
+    'login'            => 'account.php',
+    'register'         => 'account.php',
+    'account'          => 'account.php',
+    'logout'           => 'account.php',
 ];
 
 // Parse the URL to get the query string

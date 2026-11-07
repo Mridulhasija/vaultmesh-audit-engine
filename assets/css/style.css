@@ -1,7 +1,251 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-body {
-  font-family: "Poppins", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+  --bg-page: #f6f8f5;
+  --bg-card: #ffffff;
+  --text-main: #18392f;
+  --text-muted: #64786d;
+  --color-primary: #173f35;
+  --color-primary-hover: #235848;
+  --border-light: #e1e7e2;
+  --border-subtle: #ebf0ec;
 }
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background: #d6e8dd;
+  color: #14352b;
+}
+
+/* Custom editorial typography helpers */
+.font-serif,
+.font-display {
+  font-family: "Newsreader", "Fraunces", Georgia, Cambria, "Times New Roman", serif;
+}
+
+/* Elevated Header Styling */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(246, 248, 245, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-light);
+  transition: all 0.25s ease;
+}
+
+.site-header-inner {
+  min-height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 14px 24px;
+}
+
+@media (min-width: 1024px) {
+  .site-header-inner {
+    padding: 18px 36px;
+    min-height: 88px;
+  }
+}
+
+.brand-emblem-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--text-main);
+}
+
+.brand-emblem {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #1d4d40 0%, #13332a 100%);
+  display: grid;
+  place-items: center;
+  color: #f2f7f3;
+  box-shadow: 0 8px 20px -4px rgba(23, 63, 53, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand-emblem-wrap:hover .brand-emblem {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.brand-wordmark {
+  font-family: "Newsreader", "Fraunces", Georgia, serif;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: #17372d;
+  line-height: 1.1;
+}
+
+.brand-tagline {
+  display: block;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #667c70;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.nav-link {
+  font-size: 15px;
+  font-weight: 500;
+  color: #2b463a;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+  letter-spacing: -0.01em;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #123328;
+  background-color: rgba(22, 63, 51, 0.06);
+}
+
+.header-btn-secondary {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #24483b;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 9px;
+  transition: all 0.15s ease;
+}
+
+.header-btn-secondary:hover {
+  color: #112a21;
+  background-color: rgba(23, 63, 53, 0.08);
+}
+
+.header-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #173f35;
+  color: #ffffff !important;
+  text-decoration: none;
+  font-size: 14.5px;
+  font-weight: 600;
+  padding: 11px 22px;
+  border-radius: 9px;
+  border: 1px solid #13362d;
+  box-shadow: 0 4px 14px rgba(23, 63, 53, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: -0.01em;
+}
+
+.header-btn-primary:hover {
+  background: #225847;
+  box-shadow: 0 6px 20px rgba(23, 63, 53, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px);
+}
+
+.header-btn-primary:active {
+  transform: translateY(0);
+}
+
+.header-btn-account {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #17372d;
+  text-decoration: none;
+  font-size: 14.5px;
+  font-weight: 600;
+  padding: 8px 18px 8px 10px;
+  border-radius: 9999px;
+  border: 1px solid #dce4de;
+  box-shadow: 0 2px 8px rgba(23, 63, 53, 0.06);
+  transition: all 0.15s ease;
+}
+
+.header-btn-account:hover {
+  background: #f4f7f4;
+  border-color: #cbd8cf;
+}
+
+.header-btn-account .avatar-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #173f35;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: "Newsreader", Georgia, serif;
+}
+
+/* Dropdown styling */
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 210px;
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 18px 45px -10px rgba(23, 53, 44, 0.14), 0 4px 12px rgba(23, 53, 44, 0.04);
+  z-index: 60;
+}
+
+.nav-dropdown-item {
+  display: block;
+  padding: 9px 14px;
+  color: #2b453a;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 7px;
+  transition: all 0.12s ease;
+}
+
+.nav-dropdown-item:hover {
+  background-color: #f3f7f4;
+  color: #14352b;
+}
+
+/* Mobile Nav Drawer */
+.mobile-nav-panel {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  margin-top: 14px;
+  padding: 16px;
+  box-shadow: 0 20px 40px -10px rgba(23, 53, 44, 0.12);
+}
+
+/* Content styling (preserved) */
 .content-image {
   border-radius: 8px;
   object-fit: cover;
@@ -27,9 +271,11 @@ body {
 }
 
 .content h1 {
-  font-size: 2rem !important;
-  font-weight: 700;
-  line-height: 1.4;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 2.25rem !important;
+  font-weight: 500;
+  line-height: 1.25;
+  color: #17372d;
   margin-bottom: 1.25rem !important;
 }
 
@@ -38,15 +284,18 @@ body {
 .content h4,
 .content h5,
 .content h6 {
-  font-size: 1.5rem !important;
-  font-weight: 600;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.65rem !important;
+  font-weight: 500;
   line-height: 1.3;
+  color: #17372d;
   margin-bottom: 1rem !important;
 }
 
 .content p {
-  font-size: 1.125rem;
-  line-height: 1.75;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #3b5045;
   margin-bottom: 1.25rem !important;
 }
 
@@ -54,6 +303,7 @@ body {
 .content ol {
   margin-bottom: 1.25rem !important;
   margin-left: 2rem;
+  color: #3b5045;
 }
 
 .content ul {
@@ -66,22 +316,29 @@ body {
 
 .content li {
   margin-bottom: 0.5rem;
+  line-height: 1.7;
 }
 
 .content a {
   text-decoration: underline;
-  font-weight: 500;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  color: #173f35;
 }
 
 .content blockquote {
   font-size: 1.25rem;
   font-style: italic;
-  padding-left: 1rem;
+  font-family: "Newsreader", Georgia, serif;
+  padding-left: 1.25rem;
+  border-left: 3px solid #173f35;
+  color: #2e4d3f;
   margin-bottom: 1.5rem !important;
 }
 
 .content strong {
   font-weight: 600;
+  color: #17372d;
 }
 
 .content em {
@@ -92,13 +349,14 @@ body {
   max-width: 100%;
   height: auto;
   margin: 1.5rem 0;
-  border-radius: 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
 }
 
 .content hr {
   border: none;
-  border-top: 1px solid #ddd;
-  margin: 2rem 0;
+  border-top: 1px solid var(--border-light);
+  margin: 2.5rem 0;
 }
 
 .content table {
@@ -107,6 +365,9 @@ body {
   border-collapse: collapse;
   margin: 1.5rem 0;
   background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
 }
 
 .content caption {
@@ -118,20 +379,20 @@ body {
 
 .content th,
 .content td {
-  border: 1px solid #e5e7eb;
-  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-light);
+  padding: 0.85rem 1.1rem;
   text-align: left;
   vertical-align: top;
 }
 
 .content thead th {
-  background: #f1f5ff;
-  font-weight: 700;
-  color: #101820;
+  background: #f3f7f4;
+  font-weight: 600;
+  color: #17372d;
 }
 
 .content tbody tr:nth-child(even) {
-  background: #fafcff;
+  background: #fafcfa;
 }
 
 @media all and (max-width: 768px) {
