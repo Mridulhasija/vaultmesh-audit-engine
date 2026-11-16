@@ -27,7 +27,7 @@ if (!isset($_SESSION['is_admin'])) {
 
 $selsql = $utils->get_webinfo();
 $resweb = mysqli_fetch_object($selsql);
-$website_title = $resweb->name;
+$website_title = 'VaultMesh';
 $user_name = $getdata->FetchUsername($_SESSION['user_id']);
 
 $media_folder = media_folder;

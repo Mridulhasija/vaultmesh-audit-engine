@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `Behoof`
+-- Database: `VaultMesh`
 --
 
 -- --------------------------------------------------------
@@ -119,7 +119,7 @@ CREATE TABLE `tbl_config` (
 --
 
 INSERT INTO `tbl_config` (`id`, `name`, `logo`, `facebook`, `twitter`, `linkedin`, `instagram`, `youtube`, `tiktok`, `address`, `email_1`, `email_2`, `phone_1`, `phone_2`, `google_map`, `currency`, `thousand_separator`, `decimal_separator`, `tax`, `date_time`) VALUES
-(1, 'Behoof', '', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', 'INR-₹', ',', '.', 0, '2021-12-11 14:27:59');
+(1, 'VaultMesh', '', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', 'INR-₹', ',', '.', 0, '2021-12-11 14:27:59');
 
 -- --------------------------------------------------------
 

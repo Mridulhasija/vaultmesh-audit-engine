@@ -290,7 +290,7 @@ include('components/header.php');
                                 <span class="w-3 h-3 rounded-full bg-[#4fa572] inline-block"></span>
                                 <span class="w-3 h-3 rounded-full bg-[#d4af37] inline-block opacity-75"></span>
                                 <span class="w-3 h-3 rounded-full bg-[#64c2a7] inline-block opacity-60"></span>
-                                <span class="font-mono-code text-[11px] font-medium text-[#8cb29c] ml-2 tracking-wide hidden sm:inline">behoof-enclave-daemon // v3.4.1</span>
+                                <span class="font-mono-code text-[11px] font-medium text-[#8cb29c] ml-2 tracking-wide hidden sm:inline">vaultmesh-enclave-daemon // v3.4.1</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <span class="w-2 h-2 rounded-full bg-[#4ade80] inline-block beacon-dot"></span>
@@ -398,9 +398,9 @@ include('components/header.php');
                             <div class="h-80 rounded-xl bg-[#06140e] border border-white/10 p-3.5 font-mono-code text-[11px] leading-relaxed overflow-y-auto terminal-scroll text-[#a7c5b4]">
                                 <div class="text-[#5b8770] mb-2">// RFC 7519 Verified Ephemeral Session Assertion</div>
                                 <pre class="text-[#e2eae4] whitespace-pre-wrap">{
-  <span class="text-[#86efac]">"iss"</span>: <span class="text-[#fde68a]">"https://auth.behoof.security"</span>,
+  <span class="text-[#86efac]">"iss"</span>: <span class="text-[#fde68a]">"https://auth.vaultmesh.security"</span>,
   <span class="text-[#86efac]">"sub"</span>: <span class="text-[#fde68a]">"usr_9f40c18da2"</span>,
-  <span class="text-[#86efac]">"aud"</span>: <span class="text-[#fde68a]">"behoof:enclave:v3"</span>,
+  <span class="text-[#86efac]">"aud"</span>: <span class="text-[#fde68a]">"vaultmesh:enclave:v3"</span>,
   <span class="text-[#86efac]">"auth_time"</span>: <span class="text-[#93c5fd]">1731676800</span>,
   <span class="text-[#86efac]">"amr"</span>: [
     <span class="text-[#fde68a]">"passkey"</span>,
@@ -495,7 +495,7 @@ include('components/header.php');
                     <span class="italic text-[#296853]">not automated shortcuts.</span>
                 </h2>
                 <p class="text-sm sm:text-base text-[#5c7367] mt-4 leading-relaxed">
-                    Most web apps rely on brittle third-party social buttons or plain cookie storage. Examine how Behoof’s four-stage cryptographic handshake delivers zero-leakage security.
+                    Most web apps rely on brittle third-party social buttons or plain cookie storage. Examine how VaultMesh’s four-stage cryptographic handshake delivers zero-leakage security.
                 </p>
             </div>
 
@@ -552,7 +552,7 @@ include('components/header.php');
                             Cryptographic Challenge &amp; Replay Prevention
                         </h3>
                         <p id="proto-step-desc" class="text-sm sm:text-[15px] text-[#9dbcb0] leading-relaxed mb-6">
-                            When an authentication attempt begins, the Behoof server mints a single-use 32-byte cryptographic nonce mixed with client hardware identifiers. This ensures that even if an attacker intercepts network packets, they cannot replay the request.
+                            When an authentication attempt begins, the VaultMesh server mints a single-use 32-byte cryptographic nonce mixed with client hardware identifiers. This ensures that even if an attacker intercepts network packets, they cannot replay the request.
                         </p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono-code text-[#94b8a4]">
                             <div class="flex items-center gap-2.5 p-3 rounded-lg bg-black/25 border border-white/5">
@@ -575,8 +575,8 @@ include('components/header.php');
                         <pre id="proto-code-view" class="text-[#e0eee5] whitespace-pre-wrap">{
   "action": "challenge.create",
   "nonce": "0x4b78a992e10c...",
-  "origin": "https://auth.behoof",
-  "rp_id": "behoof.security",
+  "origin": "https://auth.vaultmesh.security",
+  "rp_id": "vaultmesh.security",
   "user_verification": "required"
 }</pre>
                     </div>
@@ -995,10 +995,10 @@ document.addEventListener("DOMContentLoaded", function () {
         "1": {
             badge: "PROTOCOL SPECIFICATION // RFC 8812 - STEP 01",
             title: "Cryptographic Challenge & Replay Prevention",
-            desc: "When an authentication attempt begins, the Behoof server mints a single-use 32-byte cryptographic nonce mixed with client hardware identifiers. This ensures that even if an attacker intercepts network packets, they cannot replay the request.",
+            desc: "When an authentication attempt begins, the VaultMesh server mints a single-use 32-byte cryptographic nonce mixed with client hardware identifiers. This ensures that even if an attacker intercepts network packets, they cannot replay the request.",
             spec1: "Entropy: 256-bit CSPRNG",
             spec2: "Time-to-Live: 60 Seconds",
-            code: `{\n  "action": "challenge.create",\n  "nonce": "0x4b78a992e10c...",\n  "origin": "https://auth.behoof",\n  "rp_id": "behoof.security",\n  "user_verification": "required"\n}`
+            code: `{\n  "action": "challenge.create",\n  "nonce": "0x4b78a992e10c...",\n  "origin": "https://auth.vaultmesh.security",\n  "rp_id": "vaultmesh.security",\n  "user_verification": "required"\n}`
         },
         "2": {
             badge: "CLIENT-SIDE SECURITY ENCLAVE // FIDO2 - STEP 02",

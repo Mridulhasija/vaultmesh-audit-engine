@@ -45,7 +45,7 @@ if (!$accountUser) {
 }
 
 $csrfToken = ensureCsrfToken();
-$meta_title = 'Your account | ' . $site_name;
+$meta_title = 'VaultMesh — Secure Authentication & Audit Portal';
 $meta_desc = 'Manage your ' . $site_name . ' account.';
 include __DIR__ . '/components/header.php';
 ?>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title><?= htmlspecialchars((string) ($meta_title ?? $site_name ?? ''), ENT_QUOTES, 'UTF-8') ?></title>
+    <title>VaultMesh — Secure Authentication &amp; Audit Portal</title>
     <meta name="keywords" content="<?= htmlspecialchars((string) ($meta_keyword ?? ''), ENT_QUOTES, 'UTF-8') ?>">
     <meta name="description" content="<?= htmlspecialchars((string) ($meta_desc ?? ''), ENT_QUOTES, 'UTF-8') ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,7 +64,7 @@
             <div class="flex items-center gap-4 text-[10.5px]">
                 <span class="text-[#647c70] dark:text-[#728f80]">Zero third-party trackers</span>
                 <span class="text-[#b9c9be] dark:text-[#1d3d2c]">·</span>
-                <a href="<?= SITE_URL ?>/about" class="text-[#2c4e40] dark:text-[#00ff88] hover:underline font-medium transition-colors">Why Behoof?</a>
+                <a href="<?= SITE_URL ?>/about" class="text-[#2c4e40] dark:text-[#00ff88] hover:underline font-medium transition-colors">Why VaultMesh?</a>
             </div>
         </div>
     </div>

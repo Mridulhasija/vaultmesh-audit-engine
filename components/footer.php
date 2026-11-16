@@ -57,16 +57,10 @@
                 </div>
             </div>
 
-            <!-- Bottom legal bar -->
-            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#7f998b] dark:text-[#6a8b7a]">
-                <p>© <?= date('Y') ?> <?= htmlspecialchars($site_name, ENT_QUOTES, 'UTF-8') ?>. All rights reserved.</p>
-                <div class="flex items-center gap-6">
-                    <span class="inline-flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-[#52a16f] dark:bg-[#00ff88] dark:shadow-[0_0_8px_#00ff88]"></span>
-                        Systems operational
-                    </span>
-                    <a href="<?= SITE_URL ?>/shipping-policy" class="hover:text-white dark:hover:text-[#00ff88] transition-colors">Policy</a>
-                </div>
+            <!-- Bottom legal and engine attribution -->
+            <div class="text-xs text-white/40 border-t border-white/10 pt-4 mt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+                <span>&copy; <?= date('Y') ?> VaultMesh Security. All rights reserved.</span>
+                <span class="text-primary-300/80 dark:text-neon font-mono">Protected by VaultMesh Audit Engine</span>
             </div>
         </div>
     </footer>

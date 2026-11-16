@@ -27,7 +27,7 @@ $config_result = mysqli_query($conn, "SELECT * FROM tbl_config LIMIT 1");
 if ($config_result && mysqli_num_rows($config_result) > 0) {
     $configData = mysqli_fetch_assoc($config_result);
     $logo = !empty($configData['logo']) ? media_folder . $configData['logo'] : null;
-    $site_name = $configData['name'];
+    $site_name = 'VaultMesh';
     define("CURRENCY", $configData['currency']);
     define("THOUSAND_SEPERATOR", $configData['thousand_separator']);
     define("DECIMAL_SEPERATOR", $configData['decimal_separator']);

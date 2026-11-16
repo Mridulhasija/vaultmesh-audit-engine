@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 $isRegister = false;
-$meta_title = 'Log in to secure enclave | ' . $site_name;
+$meta_title = 'VaultMesh — Secure Authentication & Audit Portal';
 $meta_desc = 'Log in to your ' . $site_name . '.';
 include __DIR__ . '/components/header.php';
 ?>
@@ -110,7 +110,7 @@ include __DIR__ . '/components/header.php';
                             <span class="w-3 h-3 rounded-full bg-[#d4af37] inline-block opacity-75"></span>
                             <span class="w-3 h-3 rounded-full bg-[#64c2a7] inline-block opacity-60"></span>
                             <span class="font-mono text-[11px] font-medium text-[#8cb29c] ml-2 tracking-wide hidden sm:inline">
-                                behoof-sentinel // auth-enclave-daemon
+                                vaultmesh-sentinel // auth-enclave-daemon
                             </span>
                         </div>
                         <div class="flex items-center gap-2">
@@ -269,11 +269,11 @@ include __DIR__ . '/components/header.php';
                     <div id="poster-panel-specs" class="poster-panel hidden relative">
                         <div class="h-80 sm:h-96 rounded-2xl bg-[#06140e] border border-white/10 p-4 font-mono text-[11px] leading-relaxed overflow-y-auto [scrollbar-width:thin] [scrollbar-color:rgba(0,230,118,0.38)_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#00e676]/35 [&::-webkit-scrollbar-thumb:hover]:bg-[#00e676]/70 text-[#a7c5b4]">
                             <div class="text-[#527d66] mb-3 pb-2 border-b border-white/10">
-                                // BEHOOF CRYPTOGRAPHIC SPECIFICATION (RFC 8812 &amp; FIPS 197)
+                                // VAULTMESH CRYPTOGRAPHIC SPECIFICATION (RFC 8812 &amp; FIPS 197)
                             </div>
                             <pre class="text-[#c5ded0] leading-relaxed whitespace-pre font-mono text-[11px]">
 {
-  "cryptographic_profile": "behoof-shield-v3",
+  "cryptographic_profile": "vaultmesh-shield-v3",
   "asymmetric_standards": [
     "FIDO2 / WebAuthn (Level 3 Authenticator)",
     "ECDSA on Curve P-256 (ES256)",

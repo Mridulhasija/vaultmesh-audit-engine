@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin | <?php echo $website_title; ?></title>
+  <title>VaultMesh — Secure Authentication &amp; Audit Portal</title>
   <meta name="robots" content="noindex, nofollow">
   <meta content="width=device-width, initial-scale=1, initial-scale=1" name="viewport">
   <!-- bootstrap -->

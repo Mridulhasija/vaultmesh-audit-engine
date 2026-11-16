@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/include/header_config.php';
 $pageCanonical = SITE_URL . '/about';
-$meta_title = 'About Our Cryptographic Enclave | ' . $site_name;
+$meta_title = 'VaultMesh — Secure Authentication & Audit Portal';
 $meta_desc = 'Learn about ' . $site_name . '\'s hardware-bound passkeys, zero-knowledge verification, and cryptographic access architecture built for absolute trust.';
 include('components/header.php');
 $pageHeroTitle = 'Architected for Absolute Cryptographic Trust';
@@ -18,7 +18,7 @@ $pageHeroTitle = 'Architected for Absolute Cryptographic Trust';
         <!-- Trust badge -->
         <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-[11px] font-semibold tracking-wider text-[#a7f3d0] shadow-sm mb-6 backdrop-blur-sm">
             <span class="w-2 h-2 rounded-full bg-[#4ade80] inline-block animate-pulse"></span>
-            <span class="uppercase tracking-widest font-mono text-[10.5px]">THE BEHOOF ARCHITECTURAL MANIFESTO</span>
+            <span class="uppercase tracking-widest font-mono text-[10.5px]">THE VAULTMESH ARCHITECTURAL MANIFESTO</span>
         </div>
 
         <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-[64px] font-medium tracking-tight text-white leading-[1.12] mb-6">
@@ -138,11 +138,11 @@ $pageHeroTitle = 'Architected for Absolute Cryptographic Trust';
                             </ul>
                         </div>
 
-                        <!-- Behoof Enclave Column -->
+                        <!-- VaultMesh Enclave Column -->
                         <div class="rounded-2xl bg-[#f2f7f4] p-5 border border-[#cbe0d3]">
                             <div class="flex items-center gap-2 text-xs font-bold font-mono tracking-wider text-[#1e523f] uppercase mb-3">
                                 <span class="w-2 h-2 rounded-full bg-[#3fa86f]"></span>
-                                Behoof Enclave Protocol
+                                VaultMesh Enclave Protocol
                             </div>
                             <ul class="space-y-2.5 text-xs text-[#2b5949] leading-relaxed">
                                 <li class="flex items-start gap-2">
@@ -403,12 +403,12 @@ $pageHeroTitle = 'Architected for Absolute Cryptographic Trust';
                     <span class="w-2.5 h-2.5 rounded-full bg-[#ef4444] inline-block opacity-75"></span>
                     <span class="w-2.5 h-2.5 rounded-full bg-[#eab308] inline-block opacity-75"></span>
                     <span class="w-2.5 h-2.5 rounded-full bg-[#22c55e] inline-block opacity-75"></span>
-                    <span class="ml-2 font-medium text-[#c5ded0]">behoof-protocol-attestation.log</span>
+                    <span class="ml-2 font-medium text-[#c5ded0]">vaultmesh-protocol-attestation.log</span>
                 </div>
                 <span class="text-[#86efac] text-[10px] tracking-wider uppercase font-semibold">LIVE ATTESTATION VERIFIED</span>
             </div>
             <pre class="text-[#8da597] leading-relaxed overflow-x-auto whitespace-pre font-mono text-[11.5px]">
-<span class="text-[#517564]">[15:06:32.401]</span> <span class="text-[#86efac]">INFO</span>  attestation_init: origin="https://auth.behoof" client_ip="::ffff:127.0.0.1"
+<span class="text-[#517564]">[15:06:32.401]</span> <span class="text-[#86efac]">INFO</span>  attestation_init: origin="https://auth.vaultmesh.security" client_ip="::ffff:127.0.0.1"
 <span class="text-[#517564]">[15:06:32.403]</span> <span class="text-[#86efac]">INFO</span>  csprng_nonce_mint: entropy_bits=256 nonce=0x83e29f10a7cb540e1189...
 <span class="text-[#517564]">[15:06:32.405]</span> <span class="text-[#86efac]">INFO</span>  fido2_assertion_received: alg=ES256 user_verification=required
 <span class="text-[#517564]">[15:06:32.407]</span> <span class="text-[#86efac]">INFO</span>  crypto_verify_signature: matched_public_key=true timing=4.2ms
