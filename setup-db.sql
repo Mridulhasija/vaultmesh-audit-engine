@@ -527,7 +527,7 @@ CREATE TABLE `tbl_user` (
   `zip_code` varchar(20) DEFAULT NULL,
   `country` varchar(50) DEFAULT NULL,
   `phone_number` varchar(20) DEFAULT NULL,
-  `last_login` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `last_login` timestamp NOT NULL DEFAULT current_timestamp(),
   `is_admin` tinyint(1) NOT NULL DEFAULT 0,
   `is_email_verified` tinyint(1) DEFAULT 0,
   `email_token` char(36) DEFAULT uuid(),
@@ -651,6 +651,21 @@ ALTER TABLE `tbl_user`
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `username` (`username`),
   ADD UNIQUE KEY `email_token` (`email_token`);
+
+-- Login session records. The browser cookie contains PHP's session ID;
+-- only its SHA-256 hash is kept here so a leaked database cannot replay it.
+CREATE TABLE `tbl_user_session` (
+  `session_hash` char(64) NOT NULL,
+  `user_id` char(36) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `last_activity` timestamp NOT NULL DEFAULT current_timestamp(),
+  `expires_at` timestamp NOT NULL,
+  PRIMARY KEY (`session_hash`),
+  KEY `user_id` (`user_id`),
+  KEY `expires_at` (`expires_at`),
+  CONSTRAINT `fk_tbl_user_session_user`
+    FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`user_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- AUTO_INCREMENT for dumped tables

@@ -7,11 +7,18 @@ ini_set('error_log', 'error_log.txt');
 // Display errors on the page
 // ini_set('display_errors', 1);
 
+$isSecureRequest = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+    || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
 session_set_cookie_params([
-    'secure' => true,
+    'lifetime' => 0,
+    'path' => '/',
+    'secure' => $isSecureRequest,
     'httponly' => true,
     'samesite' => 'Strict',
 ]);
+ini_set('session.use_strict_mode', '1');
+ini_set('session.use_only_cookies', '1');
+ini_set('session.gc_maxlifetime', '86400');
 session_start();
 require_once __DIR__ . '/connection.php';
 $conn = db();

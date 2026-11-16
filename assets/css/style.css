@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
 
 :root {
   --bg-page: #f6f8f5;
@@ -9,6 +9,24 @@
   --color-primary-hover: #235848;
   --border-light: #e1e7e2;
   --border-subtle: #ebf0ec;
+  --enclave-dark: #0e241d;
+  --enclave-surface: #15382e;
+}
+
+html.dark,
+.dark {
+  --bg-page: #000000;
+  --bg-card: #040705;
+  --text-main: #f0fbf4;
+  --text-muted: #8aa496;
+  --color-primary: #00ff88;
+  --color-primary-hover: #05f178;
+  --border-light: #102418;
+  --border-subtle: #08140d;
+  --enclave-dark: #000000;
+  --enclave-surface: #030604;
+  --neon-green: #00ff88;
+  --neon-glow: 0 0 22px rgba(0, 255, 136, 0.45);
 }
 
 *, *::before, *::after {
@@ -23,11 +41,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+html.dark body {
+  background-color: #000000 !important;
+  color: #f0fbf4 !important;
 }
 
 ::selection {
   background: #d6e8dd;
   color: #14352b;
+}
+
+html.dark ::selection {
+  background: #00ff88 !important;
+  color: #000000 !important;
 }
 
 /* Custom editorial typography helpers */
@@ -36,134 +65,284 @@ body {
   font-family: "Newsreader", "Fraunces", Georgia, Cambria, "Times New Roman", serif;
 }
 
+.font-mono-code {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
 /* Elevated Header Styling */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: rgba(246, 248, 245, 0.94);
+  background-color: rgba(246, 248, 245, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-light);
   transition: all 0.25s ease;
 }
 
-.site-header-inner {
-  min-height: 84px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 14px 24px;
-}
-
-@media (min-width: 1024px) {
-  .site-header-inner {
-    padding: 18px 36px;
-    min-height: 88px;
-  }
+html.dark .site-header {
+  background-color: rgba(0, 0, 0, 0.94) !important;
+  border-bottom: 1px solid #102418 !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.95), 0 0 20px rgba(0, 255, 136, 0.05) !important;
 }
 
 .brand-emblem-wrap {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   text-decoration: none;
   color: var(--text-main);
+  flex-shrink: 0;
 }
 
 .brand-emblem {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 12px;
   background: linear-gradient(145deg, #1d4d40 0%, #13332a 100%);
   display: grid;
   place-items: center;
   color: #f2f7f3;
-  box-shadow: 0 8px 20px -4px rgba(23, 63, 53, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 18px -4px rgba(23, 63, 53, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.12);
   flex-shrink: 0;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
 }
 
 .brand-emblem-wrap:hover .brand-emblem {
   transform: translateY(-1px) scale(1.02);
 }
 
+html.dark .brand-emblem {
+  background: linear-gradient(145deg, #071f14 0%, #000000 100%) !important;
+  border: 1px solid rgba(0, 255, 136, 0.4) !important;
+  color: #00ff88 !important;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.25), inset 0 1px 1px rgba(0, 255, 136, 0.2) !important;
+}
+
+html.dark .brand-emblem-wrap:hover .brand-emblem {
+  box-shadow: 0 0 28px rgba(0, 255, 136, 0.45), inset 0 1px 1px rgba(0, 255, 136, 0.35) !important;
+}
+
 .brand-wordmark {
   font-family: "Newsreader", "Fraunces", Georgia, serif;
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 500;
   letter-spacing: -0.03em;
   color: #17372d;
   line-height: 1.1;
+  white-space: nowrap;
+  transition: color 0.18s ease;
+}
+
+html.dark .brand-wordmark {
+  color: #ffffff !important;
+}
+
+html.dark .brand-wordmark:hover {
+  color: #00ff88 !important;
+  text-shadow: 0 0 14px rgba(0, 255, 136, 0.5);
 }
 
 .brand-tagline {
   display: block;
   font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 9.5px;
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   color: #667c70;
   text-transform: uppercase;
   margin-top: 2px;
+  white-space: nowrap;
+  transition: color 0.18s ease;
 }
 
+html.dark .brand-tagline {
+  color: #7f998b !important;
+}
+
+/* Nav Link Styling with Spacious Elegance */
 .nav-link {
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 500;
   color: #2b463a;
   text-decoration: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  transition: color 0.15s ease, background-color 0.15s ease;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   letter-spacing: -0.01em;
+  white-space: nowrap;
+  position: relative;
+}
+
+/* Keep links evenly spaced while leaving room for the logo and account actions. */
+.site-header .nav-menu {
+  gap: clamp(0.4rem, 0.8vw, 0.9rem);
+}
+
+.site-header .nav-link {
+  padding-inline: clamp(0.55rem, 0.75vw, 0.85rem);
+  font-size: clamp(13px, 0.88vw, 14px);
+}
+
+@media (min-width: 1280px) and (max-width: 1399px) {
+  .site-header .nav-menu { gap: 0.2rem; }
+  .site-header .nav-link { padding-inline: 0.45rem; }
 }
 
 .nav-link:hover,
 .nav-link.active {
   color: #123328;
-  background-color: rgba(22, 63, 51, 0.06);
+  background-color: rgba(22, 63, 51, 0.08);
 }
 
-.header-btn-secondary {
-  font-size: 14.5px;
-  font-weight: 600;
-  color: #24483b;
-  text-decoration: none;
-  padding: 10px 18px;
-  border-radius: 9px;
-  transition: all 0.15s ease;
+html.dark .nav-link {
+  color: #b7d6c6 !important;
 }
 
-.header-btn-secondary:hover {
-  color: #112a21;
-  background-color: rgba(23, 63, 53, 0.08);
+html.dark .nav-link:hover,
+html.dark .nav-link.active {
+  color: #00ff88 !important;
+  background-color: rgba(0, 255, 136, 0.1) !important;
+  text-shadow: 0 0 12px rgba(0, 255, 136, 0.35);
 }
 
-.header-btn-primary {
+html.dark .nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background: #00ff88;
+  border-radius: 9999px;
+  box-shadow: 0 0 10px #00ff88;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background: #173f35;
-  color: #ffffff !important;
-  text-decoration: none;
-  font-size: 14.5px;
-  font-weight: 600;
-  padding: 11px 22px;
-  border-radius: 9px;
-  border: 1px solid #13362d;
-  box-shadow: 0 4px 14px rgba(23, 63, 53, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid #cfe0d5;
+  color: #24483b;
+  cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(18, 46, 37, 0.05);
+}
+
+.dark-mode-toggle-btn:hover {
+  background: #eef5f0;
+  border-color: #173f35;
+  color: #0f2e24;
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: 0 4px 12px rgba(18, 46, 37, 0.1);
+}
+
+.dark-mode-toggle-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+html.dark .dark-mode-toggle-btn {
+  background: #050806 !important;
+  border: 1px solid rgba(0, 255, 136, 0.35) !important;
+  color: #00ff88 !important;
+  box-shadow: 0 0 16px rgba(0, 255, 136, 0.25), inset 0 0 10px rgba(0, 255, 136, 0.08) !important;
+}
+
+html.dark .dark-mode-toggle-btn:hover {
+  background: rgba(0, 255, 136, 0.12) !important;
+  border-color: #00ff88 !important;
+  box-shadow: 0 0 24px rgba(0, 255, 136, 0.5) !important;
+  transform: translateY(-1px) rotate(15deg) scale(1.06);
+}
+
+/* Beautiful & Professional Login Button */
+.header-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #173f35;
+  background: #ffffff;
+  border: 1px solid #cfe0d5;
+  text-decoration: none;
+  padding: 9.5px 18px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(18, 46, 37, 0.05);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
   letter-spacing: -0.01em;
 }
 
+.header-btn-secondary:hover {
+  color: #0d2820;
+  background: #eef5f0;
+  border-color: #173f35;
+  box-shadow: 0 4px 12px rgba(18, 46, 37, 0.1);
+  transform: translateY(-1px);
+}
+
+.header-btn-secondary:active {
+  transform: translateY(0);
+}
+
+html.dark .header-btn-secondary {
+  background: #050806 !important;
+  border: 1px solid rgba(0, 255, 136, 0.32) !important;
+  color: #e5f6ed !important;
+  box-shadow: 0 0 14px rgba(0, 255, 136, 0.15) !important;
+}
+
+html.dark .header-btn-secondary:hover {
+  color: #00ff88 !important;
+  border-color: #00ff88 !important;
+  background: rgba(0, 255, 136, 0.12) !important;
+  box-shadow: 0 0 22px rgba(0, 255, 136, 0.35) !important;
+  transform: translateY(-1px);
+}
+
+/* Beautiful & Professional Register Button (Bright Satisfying Green in Dark Mode) */
+.header-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #173f35 0%, #102e26 100%);
+  color: #ffffff !important;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 9.5px 22px;
+  border-radius: 12px;
+  border: 1px solid #0f2c23;
+  box-shadow: 0 4px 14px rgba(23, 63, 53, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: -0.01em;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  position: relative;
+}
+
+.header-btn-primary .btn-live-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #4ade80;
+  box-shadow: 0 0 8px #4ade80;
+  display: inline-block;
+  animation: beaconPulse 2s infinite;
+}
+
 .header-btn-primary:hover {
-  background: #225847;
-  box-shadow: 0 6px 20px rgba(23, 63, 53, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  background: linear-gradient(135deg, #225a4c 0%, #163d32 100%);
+  box-shadow: 0 6px 20px rgba(23, 63, 53, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.25);
   transform: translateY(-1px);
 }
 
@@ -171,6 +350,33 @@ body {
   transform: translateY(0);
 }
 
+/* DARK MODE: COMPLETE BLACK WITH BRIGHT-SATISFYING GREEN */
+html.dark .header-btn-primary {
+  background: #00e676 !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  border: 1px solid #00e676 !important;
+  box-shadow: 0 5px 16px rgba(0, 230, 118, 0.16) !important;
+  letter-spacing: -0.01em;
+  text-shadow: none !important;
+}
+
+html.dark .header-btn-primary .btn-live-indicator {
+  background-color: #000000 !important;
+  box-shadow: none !important;
+}
+
+html.dark .header-btn-primary svg {
+  color: #000000 !important;
+}
+
+html.dark .header-btn-primary:hover {
+  background: #26f58d !important;
+  box-shadow: 0 7px 20px rgba(0, 230, 118, 0.24) !important;
+  transform: translateY(-1px);
+}
+
+/* User Account Button */
 .header-btn-account {
   display: inline-flex;
   align-items: center;
@@ -178,13 +384,15 @@ body {
   background: #ffffff;
   color: #17372d;
   text-decoration: none;
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 600;
-  padding: 8px 18px 8px 10px;
+  padding: 7px 16px 7px 9px;
   border-radius: 9999px;
   border: 1px solid #dce4de;
   box-shadow: 0 2px 8px rgba(23, 63, 53, 0.06);
   transition: all 0.15s ease;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
 }
 
 .header-btn-account:hover {
@@ -193,46 +401,123 @@ body {
 }
 
 .header-btn-account .avatar-dot {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: #173f35;
   color: #ffffff;
   display: grid;
   place-items: center;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
   font-family: "Newsreader", Georgia, serif;
 }
 
-/* Dropdown styling */
+html.dark .header-btn-account {
+  background: #050806 !important;
+  border: 1px solid rgba(0, 255, 136, 0.4) !important;
+  color: #e5f6ed !important;
+  box-shadow: 0 0 16px rgba(0, 255, 136, 0.2) !important;
+}
+
+html.dark .header-btn-account:hover {
+  background: rgba(0, 255, 136, 0.12) !important;
+  border-color: #00ff88 !important;
+  color: #00ff88 !important;
+  box-shadow: 0 0 24px rgba(0, 255, 136, 0.35) !important;
+}
+
+html.dark .header-btn-account .avatar-dot {
+  background: #00ff88 !important;
+  color: #000000 !important;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.6) !important;
+}
+
+/* ========================================================
+   Dropdown Positioning & Anti-Overlap Architecture
+   ======================================================== */
+.dropdown {
+  position: relative;
+}
+
 .nav-dropdown-menu {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 4px);
   left: 0;
-  min-width: 210px;
-  background: #ffffff;
+  min-width: 220px;
+  max-width: 320px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-light);
   border-radius: 12px;
   padding: 8px;
-  box-shadow: 0 18px 45px -10px rgba(23, 53, 44, 0.14), 0 4px 12px rgba(23, 53, 44, 0.04);
+  box-shadow: 0 20px 45px -10px rgba(23, 53, 44, 0.16), 0 4px 14px rgba(23, 53, 44, 0.05);
   z-index: 60;
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.18s;
+}
+
+/* Invisible mouse bridge so hover is never lost when moving down */
+.nav-dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+}
+
+/* Right-align dropdowns on the right side of the navbar to prevent overlapping action buttons */
+.nav-dropdown-menu.dropdown-menu-right {
+  left: auto !important;
+  right: 0 !important;
+}
+
+.dropdown:hover .nav-dropdown-menu,
+.dropdown.is-open .nav-dropdown-menu {
+  display: block;
 }
 
 .nav-dropdown-item {
-  display: block;
-  padding: 9px 14px;
+  display: flex;
+  align-items: center;
+  padding: 8.5px 12px;
   color: #2b453a;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 500;
-  border-radius: 7px;
+  border-radius: 8px;
   transition: all 0.12s ease;
 }
 
 .nav-dropdown-item:hover {
-  background-color: #f3f7f4;
-  color: #14352b;
+  background-color: #f1f6f2;
+  color: #123328;
+  transform: translateX(2px);
+}
+
+/* Dropdown Styling in Dark Mode */
+html.dark .nav-dropdown-menu {
+  background: rgba(3, 7, 5, 0.98) !important;
+  border: 1px solid rgba(0, 255, 136, 0.25) !important;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.98), 0 0 30px rgba(0, 255, 136, 0.15) !important;
+}
+
+html.dark .nav-dropdown-item {
+  color: #a8cebd !important;
+}
+
+html.dark .nav-dropdown-item:hover {
+  background-color: rgba(0, 255, 136, 0.14) !important;
+  color: #00ff88 !important;
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.3);
+}
+
+/* Mobile Nav Drawer in Dark Mode */
+html.dark .mobile-nav-panel {
+  background: #030504 !important;
+  border: 1px solid rgba(0, 255, 136, 0.25) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.98), 0 0 35px rgba(0, 255, 136, 0.12) !important;
 }
 
 /* Mobile Nav Drawer */
@@ -243,6 +528,204 @@ body {
   margin-top: 14px;
   padding: 16px;
   box-shadow: 0 20px 40px -10px rgba(23, 53, 44, 0.12);
+}
+
+/* ========================================================
+   AUTHENTICATION HERO POSTER & SECURITY ENCLAVE ANIMATIONS
+   ======================================================== */
+
+/* Glowing laser scanner bar */
+@keyframes laserSweep {
+  0% {
+    top: 5%;
+    opacity: 0.6;
+    filter: drop-shadow(0 0 6px rgba(79, 218, 147, 0.6));
+  }
+  50% {
+    top: 92%;
+    opacity: 1;
+    filter: drop-shadow(0 0 14px rgba(79, 218, 147, 0.9));
+  }
+  100% {
+    top: 5%;
+    opacity: 0.6;
+    filter: drop-shadow(0 0 6px rgba(79, 218, 147, 0.6));
+  }
+}
+
+.scanner-laser {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #4ade80 20%, #a7f3d0 50%, #4ade80 80%, transparent);
+  animation: laserSweep 3.2s ease-in-out infinite;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Concentric Cryptographic Cipher Rings */
+@keyframes cipherSpinCw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cipherSpinCcw {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.cipher-ring-outer {
+  animation: cipherSpinCw 42s linear infinite;
+  transform-origin: center center;
+}
+
+.cipher-ring-inner {
+  animation: cipherSpinCcw 30s linear infinite;
+  transform-origin: center center;
+}
+
+/* Radar Sonar Pulse */
+@keyframes radarPulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.8;
+  }
+  60% {
+    transform: scale(1.35);
+    opacity: 0.15;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.radar-pulse-wave-1 {
+  animation: radarPulse 3.6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.radar-pulse-wave-2 {
+  animation: radarPulse 3.6s cubic-bezier(0.2, 0.8, 0.2, 1) 1.8s infinite;
+}
+
+/* Live Active Beacon Pulse */
+@keyframes beaconPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(74, 222, 128, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+  }
+}
+
+.beacon-dot {
+  animation: beaconPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Pipeline data packet travel */
+@keyframes packetTravel {
+  0% {
+    left: 0%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+.packet-pulse-dot {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 10px #4ade80, 0 0 18px #22c55e;
+  animation: packetTravel 2.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* Subtle Organic Floating Telemetry Badges */
+@keyframes floatSubtleA {
+  0%, 100% {
+    transform: translateY(0px) rotate(-0.5deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.8deg);
+  }
+}
+
+@keyframes floatSubtleB {
+  0%, 100% {
+    transform: translateY(0px) rotate(0.6deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-0.6deg);
+  }
+}
+
+@keyframes floatSubtleC {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.floating-badge-top {
+  animation: floatSubtleA 6s ease-in-out infinite;
+}
+
+.floating-badge-left {
+  animation: floatSubtleB 7s ease-in-out 0.8s infinite;
+}
+
+.floating-badge-right {
+  animation: floatSubtleC 5.5s ease-in-out 1.5s infinite;
+}
+
+/* Subtle scan grid background */
+.enclave-grid-bg {
+  background-size: 24px 24px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+/* Custom Scrollbar for terminal preview */
+.terminal-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.terminal-scroll::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+.terminal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+.terminal-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* Content styling (preserved) */
@@ -405,4 +888,605 @@ body {
 
 .iti {
   width: 100%;
+}
+
+/* ========================================================
+   GLOBAL THEME ENGINE: COMPLETE BLACK & SATISFYING GREEN
+   Designed for pure contrast, premium depth & aesthetic polish
+   ======================================================== */
+
+/* Root Sections & Background Transitions */
+html.dark main,
+html.dark .home-page-root,
+html.dark .auth-enclave-root {
+  background-color: #000000 !important;
+  color: #f0fbf4 !important;
+}
+
+html.dark section,
+html.dark [class*="bg-gradient-to-b from-[#f"],
+html.dark [class*="bg-gradient-to-b from-[#e"] {
+  background: #000000 !important;
+  border-color: #102418 !important;
+}
+
+html.dark .bg-\[\#f6f8f5\],
+html.dark .bg-\[\#f4f7f4\],
+html.dark .bg-\[\#f8faf8\],
+html.dark .bg-\[\#eef3ef\],
+html.dark .bg-\[\#f7faf7\],
+html.dark .bg-\[\#edf3ef\],
+html.dark .bg-\[\#f0f4f1\],
+html.dark .bg-\[\#e7eee9\],
+html.dark .bg-\[\#fbfdfb\] {
+  background-color: #000000 !important;
+}
+
+/* Dark Mode Card & Surface Elevations */
+html.dark section.bg-white,
+html.dark section.bg-\[\#ffffff\],
+html.dark div.bg-white,
+html.dark div.bg-\[\#ffffff\] {
+  background-color: #040705 !important;
+  border-color: #102418 !important;
+}
+
+html.dark .bg-white:hover,
+html.dark .bg-\[\#ffffff\]:hover {
+  border-color: rgba(0, 255, 136, 0.4) !important;
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.95), 0 0 20px rgba(0, 255, 136, 0.1) !important;
+}
+
+/* Universal Dark Borders */
+html.dark .border-\[\#e1e7e2\],
+html.dark .border-\[\#e2eae4\],
+html.dark .border-\[\#d6e3da\],
+html.dark .border-\[\#dce5de\],
+html.dark .border-\[\#d2ded5\],
+html.dark .border-\[\#d6e2da\],
+html.dark .border-\[\#cfdfd5\],
+html.dark .border-\[\#e8f0eb\],
+html.dark .border-\[\#edf2ee\],
+html.dark .border-\[\#0e2720\],
+html.dark .border-\[\#0d221c\] {
+  border-color: #102418 !important;
+}
+
+/* Typography Hierarchy in Dark Mode */
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+  color: #ffffff !important;
+}
+
+html.dark .text-\[\#143229\],
+html.dark .text-\[\#17372d\],
+html.dark .text-\[\#18392f\],
+html.dark .text-\[\#143329\],
+html.dark .text-\[\#112921\],
+html.dark .text-\[\#123328\],
+html.dark .text-\[\#1e3a2f\],
+html.dark .text-\[\#204033\],
+html.dark .text-\[\#1f4236\],
+html.dark .text-\[\#244b3c\],
+html.dark .text-\[\#244a3d\],
+html.dark .text-\[\#2c4e40\],
+html.dark .text-\[\#385246\] {
+  color: #f2fbf6 !important;
+}
+
+/* Bright Satisfying Green Accents */
+html.dark .text-\[\#276652\],
+html.dark .text-\[\#173f35\],
+html.dark .text-\[\#183f34\],
+html.dark .text-\[\#4fa572\],
+html.dark .text-\[\#5fa879\],
+html.dark .text-\[\#449163\],
+html.dark .text-\[\#3ea66e\],
+html.dark .text-\[\#52a16f\],
+html.dark .text-\[\#72a483\] {
+  color: #00ff88 !important;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.35);
+}
+
+/* Body & Muted Typography */
+html.dark .text-\[\#4a6356\],
+html.dark .text-\[\#526a5e\],
+html.dark .text-\[\#526b5e\],
+html.dark .text-\[\#64786d\],
+html.dark .text-\[\#556e62\],
+html.dark .text-\[\#667c70\],
+html.dark .text-\[\#647c70\],
+html.dark .text-\[\#60796d\],
+html.dark .text-\[\#6d887a\],
+html.dark .text-\[\#7a9386\],
+html.dark .text-\[\#7f998b\],
+html.dark .text-\[\#7ba58c\],
+html.dark .text-\[\#7da38d\] {
+  color: #8faea0 !important;
+}
+
+html.dark .text-\[\#b9c9be\],
+html.dark .text-\[\#9cb0a4\],
+html.dark .text-\[\#93aba0\],
+html.dark .text-\[\#a0b8ab\],
+html.dark .text-\[\#a5c6b4\] {
+  color: #557264 !important;
+}
+
+/* Live Indicators & Beacon Dots */
+html.dark .bg-\[\#4ade80\],
+html.dark .bg-\[\#4fa572\],
+html.dark .bg-\[\#5fa879\],
+html.dark .bg-\[\#52a16f\] {
+  background-color: #00ff88 !important;
+  box-shadow: 0 0 10px #00ff88 !important;
+}
+
+html.dark .bg-\[\#4ade80\]\/10,
+html.dark .bg-\[\#4fa572\]\/10,
+html.dark .bg-\[\#173f35\]\/10,
+html.dark .bg-\[\#173f35\]\/12,
+html.dark .bg-\[\#3b8c66\]\/10,
+html.dark .bg-\[\#3b8c66\]\/15 {
+  background-color: rgba(0, 255, 136, 0.1) !important;
+}
+
+/* Form Inputs in Dark Mode */
+html.dark input,
+html.dark textarea,
+html.dark select,
+html.dark .glowing-input {
+  background-color: #020403 !important;
+  color: #ffffff !important;
+  border-color: #142e20 !important;
+}
+
+html.dark input:focus,
+html.dark textarea:focus,
+html.dark select:focus,
+html.dark .glowing-input:focus {
+  border-color: #00ff88 !important;
+  box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.25), 0 0 16px rgba(0, 255, 136, 0.25) !important;
+  outline: none !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #526e60 !important;
+}
+
+/* Form Buttons & Page CTA Elements */
+html.dark .glowing-submit-btn,
+html.dark form button[type="submit"] {
+  background: linear-gradient(135deg, #00ff88 0%, #00e676 100%) !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  border: 1px solid #33ff9e !important;
+  box-shadow: 0 0 22px rgba(0, 255, 136, 0.5) !important;
+}
+
+html.dark .glowing-submit-btn:hover,
+html.dark form button[type="submit"]:hover {
+  background: linear-gradient(135deg, #2bff9d 0%, #05f178 100%) !important;
+  box-shadow: 0 0 32px rgba(0, 255, 136, 0.75) !important;
+  transform: translateY(-1px);
+}
+
+html.dark .glowing-submit-btn *,
+html.dark form button[type="submit"] * {
+  color: #000000 !important;
+}
+
+html.dark .glowing-submit-btn .bg-\[\#4ade80\] {
+  background-color: #000000 !important;
+  box-shadow: none !important;
+}
+
+/* Security Enclave Hero Poster & Deep Cards */
+.auth-marquee-track {
+  animation: auth-marquee-scroll 42s linear infinite;
+}
+
+.auth-marquee:hover .auth-marquee-track,
+.auth-marquee.is-paused .auth-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes auth-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-marquee-track { animation: none; }
+}
+
+html.dark .security-poster-card,
+html.dark .bg-\[\#0d221b\] {
+  background-color: #020403 !important;
+  border-color: rgba(0, 255, 136, 0.25) !important;
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 255, 136, 0.15) !important;
+}
+
+html.dark .bg-\[\#071711\],
+html.dark .bg-\[\#06140e\] {
+  background-color: #010302 !important;
+  border-color: #0d2116 !important;
+}
+
+html.dark .auth-enclave-root .entropy-meter-track {
+  background-color: #000000 !important;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.95), 0 0 8px rgba(0, 230, 118, 0.12) !important;
+}
+
+html.dark .auth-enclave-root .entropy-meter-fill {
+  background-image: linear-gradient(90deg, #00b85e, #00e676, #8effbd) !important;
+  box-shadow: 0 0 12px rgba(0, 230, 118, 0.8) !important;
+}
+
+html.dark .scanner-laser {
+  background: linear-gradient(90deg, transparent, #00ff88 20%, #a7f3d0 50%, #00ff88 80%, transparent) !important;
+  filter: drop-shadow(0 0 10px #00ff88) !important;
+}
+
+/* Editorial Content Typography */
+html.dark .content h1,
+html.dark .content h2,
+html.dark .content h3,
+html.dark .content h4,
+html.dark .content h5,
+html.dark .content h6 {
+  color: #ffffff !important;
+}
+
+html.dark .content p,
+html.dark .content li {
+  color: #c4ded1 !important;
+}
+
+html.dark .content a {
+  color: #00ff88 !important;
+}
+
+html.dark .content blockquote {
+  border-left-color: #00ff88 !important;
+  color: #a4cebb !important;
+}
+
+html.dark .content table {
+  background: #030604 !important;
+  border-color: #102418 !important;
+}
+
+html.dark .content thead th {
+  background: #06110a !important;
+  color: #ffffff !important;
+  border-color: #102418 !important;
+}
+
+html.dark .content th,
+html.dark .content td {
+  border-color: #102418 !important;
+  color: #d0e7dc !important;
+}
+
+html.dark .content tbody tr:nth-child(even) {
+  background: #050a07 !important;
+}
+
+/* Premium Auth Card in Dark Mode */
+html.dark .premium-auth-card {
+  background-color: #030604 !important;
+  border-color: rgba(0, 255, 136, 0.25) !important;
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 255, 136, 0.12) !important;
+}
+
+html.dark .premium-auth-card:hover {
+  border-color: #00ff88 !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.98), 0 0 50px rgba(0, 255, 136, 0.25) !important;
+}
+
+html.dark .premium-auth-card .bg-\[\#f0f4f1\] {
+  background-color: #010302 !important;
+  border-color: #0d2116 !important;
+}
+
+html.dark .premium-auth-card .bg-white {
+  background-color: #050806 !important;
+  color: #00ff88 !important;
+  border-color: rgba(0, 255, 136, 0.4) !important;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2) !important;
+}
+
+html.dark .premium-auth-card .bg-\[\#f7faf7\] {
+  background-color: #010302 !important;
+  border-color: #0d2116 !important;
+  color: #8faea0 !important;
+}
+
+/* Site Editorial Footer in Dark Mode */
+html.dark footer {
+  background-color: #000000 !important;
+  border-top-color: #0d1f15 !important;
+}
+
+html.dark footer a:hover {
+  color: #00ff88 !important;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.45);
+}
+
+/* Restrained black and green treatment for the navigation. */
+html.dark .site-kicker-bar {
+  background: #050706 !important;
+  border-color: #151c18 !important;
+}
+
+html.dark .site-header {
+  background: rgba(0, 0, 0, 0.96) !important;
+  border-color: #171f1a !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.42) !important;
+}
+
+html.dark .site-header .nav-link {
+  color: #c3cec7 !important;
+  text-shadow: none !important;
+}
+
+html.dark .site-header .nav-link:hover,
+html.dark .site-header .nav-link.active {
+  color: #00e676 !important;
+  background: rgba(0, 230, 118, 0.08) !important;
+  text-shadow: none !important;
+}
+
+html.dark .site-header .nav-link.active::after {
+  background: #00e676 !important;
+  box-shadow: none !important;
+}
+
+html.dark .site-header .brand-emblem {
+  background: #07120b !important;
+  border-color: #145b35 !important;
+  color: #00e676 !important;
+  box-shadow: none !important;
+}
+
+html.dark .site-header .brand-wordmark { color: #f2f5f3 !important; }
+html.dark .site-header .brand-tagline { color: #8b9b91 !important; }
+
+html.dark .site-header .dark-mode-toggle-btn {
+  background: #080b09 !important;
+  border-color: #28352d !important;
+  color: #00e676 !important;
+  box-shadow: none !important;
+}
+
+html.dark .site-header .dark-mode-toggle-btn:hover {
+  background: #101812 !important;
+  border-color: #00a957 !important;
+  box-shadow: none !important;
+  transform: translateY(-1px);
+}
+
+html.dark .site-header .header-btn-secondary {
+  background: #080b09 !important;
+  border-color: #28352d !important;
+  color: #e1e8e3 !important;
+  box-shadow: none !important;
+}
+
+html.dark .site-header .header-btn-secondary:hover {
+  background: #101812 !important;
+  border-color: #00a957 !important;
+  color: #00e676 !important;
+  box-shadow: none !important;
+}
+
+html.dark .site-header .header-btn-primary {
+  background: #00e676 !important;
+  border-color: #00e676 !important;
+  color: #00190c !important;
+  box-shadow: none !important;
+}
+
+html.dark .site-header .header-btn-primary:hover {
+  background: #21f187 !important;
+  box-shadow: 0 4px 14px rgba(0, 230, 118, 0.18) !important;
+}
+
+html.dark .site-header .mobile-nav-panel {
+  background: #050706 !important;
+  border-color: #1b2820 !important;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.55) !important;
+}
+
+html.dark .site-header .nav-dropdown-menu {
+  background: #050706 !important;
+  border-color: #1b2820 !important;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55) !important;
+}
+
+/* Auth pages use the same near-black surfaces and restrained green accents. */
+html.dark .auth-enclave-root,
+html.dark .account-dashboard {
+  background: #000000 !important;
+  color: #e8eee9 !important;
+}
+
+html.dark .auth-enclave-root .premium-auth-card {
+  background: #070908 !important;
+  border-color: #202a23 !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55) !important;
+}
+
+html.dark .auth-enclave-root .security-poster-card {
+  background: #050806 !important;
+  border-color: #1b2820 !important;
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.5) !important;
+}
+
+html.dark .auth-enclave-root .auth-scrolling-ticker-wrap {
+  background: #070d09 !important;
+  border-color: #1b3023 !important;
+  box-shadow: none !important;
+}
+
+html.dark .account-dashboard .account-summary-card,
+html.dark .account-dashboard section.rounded-2xl {
+  background: #070908 !important;
+  border-color: #202a23 !important;
+  box-shadow: none !important;
+}
+
+html.dark .auth-enclave-root input,
+html.dark .auth-enclave-root textarea,
+html.dark .auth-enclave-root select {
+  background: #030504 !important;
+  border-color: #26342b !important;
+  color: #eef4ef !important;
+}
+
+html.dark .auth-enclave-root input:focus,
+html.dark .auth-enclave-root textarea:focus,
+html.dark .auth-enclave-root select:focus {
+  border-color: #00b85e !important;
+  box-shadow: 0 0 0 3px rgba(0, 230, 118, 0.14) !important;
+}
+
+html.dark .auth-enclave-root input::placeholder,
+html.dark .auth-enclave-root textarea::placeholder {
+  color: #78877d !important;
+}
+
+/* Apply dark surfaces to light utility classes throughout every public page. */
+html.dark body,
+html.dark main {
+  background-color: #000 !important;
+  color: #e8eee9;
+}
+
+html.dark [class~="bg-white"],
+html.dark [class~="bg-[#ffffff]"],
+html.dark [class*="bg-white/70"],
+html.dark [class*="bg-white/95"],
+html.dark [class*="bg-[#f"],
+html.dark [class*="bg-[#e"],
+html.dark [class~="bg-gray-50"],
+html.dark [class~="bg-gray-100"],
+html.dark [class~="bg-primary-50"],
+html.dark [class~="bg-secondary-200"],
+html.dark [class~="bg-secondary-300"] {
+  background-color: #080b09 !important;
+  background-image: none !important;
+  border-color: #202a23 !important;
+}
+
+html.dark [class*="bg-gradient-to"]:not(.entropy-meter-fill) {
+  background-color: #000 !important;
+  background-image: none !important;
+}
+
+html.dark [class*="text-[#"] {
+  color: #e2ebe5 !important;
+}
+
+html.dark [class~="text-primary-600"],
+html.dark [class~="text-primary-700"],
+html.dark [class~="text-primary-800"],
+html.dark [class~="text-secondary-600"],
+html.dark [class~="text-secondary-700"],
+html.dark [class~="text-secondary-800"],
+html.dark [class~="text-secondary-900"] {
+  color: #d5e3da !important;
+}
+
+html.dark [class~="text-secondary-500"] { color: #9aaa9f !important; }
+html.dark [class~="text-green-500"] { color: #00e676 !important; }
+
+html.dark [class~="bg-primary-600"],
+html.dark [class~="bg-primary-700"] {
+  background-color: #00c96b !important;
+}
+
+html.dark [class~="border-primary-100"],
+html.dark [class~="border-primary-200"],
+html.dark [class~="border-secondary-200"],
+html.dark [class~="border-secondary-300"] {
+  border-color: #202a23 !important;
+}
+
+html.dark [class*="text-[#5"],
+html.dark [class*="text-[#6"],
+html.dark [class*="text-[#7"] {
+  color: #9aaa9f !important;
+}
+
+html.dark [class*="text-[#173f35]"],
+html.dark [class*="text-[#183f34]"],
+html.dark [class*="text-[#276652]"],
+html.dark [class*="text-[#2b8857]"],
+html.dark [class*="text-[#2d6f56]"],
+html.dark [class*="text-[#3ca166]"],
+html.dark [class*="text-[#3ea66e]"],
+html.dark [class*="text-[#4ade80]"],
+html.dark [class*="text-[#4fa572]"],
+html.dark [class*="text-[#52a16f]"],
+html.dark [class*="text-[#5fa879]"],
+html.dark [class*="text-[#00ff88]"] {
+  color: #00e676 !important;
+}
+
+html.dark [class*="text-[#fde68a]"],
+html.dark [class*="text-[#d4af37]"] { color: #f2d675 !important; }
+html.dark [class*="text-[#b54a3a]"],
+html.dark [class*="text-[#a13b2c]"],
+html.dark [class*="text-[#d04430]"] { color: #ff8b7b !important; }
+html.dark [class*="text-[#000000]"],
+html.dark [class~="dark:text-black"] { color: #000 !important; }
+html.dark [class*="text-[#ffffff]"],
+html.dark [class~="text-white"] { color: #fff !important; }
+
+html.dark [class*="border-[#d"],
+html.dark [class*="border-[#e"],
+html.dark [class~="border-gray-200"] {
+  border-color: #202a23 !important;
+}
+
+html.dark .site-header .nav-menu {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+html.dark .site-header .nav-menu::-webkit-scrollbar { display: none; }
+
+.site-header .nav-menu > li { flex: 0 0 auto; }
+.site-header-actions { gap: clamp(0.4rem, 0.65vw, 0.75rem); }
+.site-header-actions > a { flex-shrink: 0; }
+
+@media (min-width: 1280px) {
+  .site-header .nav-menu {
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .site-header .nav-menu::-webkit-scrollbar { display: none; }
+}
+
+@media (max-width: 1279px) {
+  .site-header-actions .header-btn-secondary,
+  .site-header-actions .header-btn-primary { padding-inline: 12px; }
+}
+
+@media (max-width: 420px) {
+  .site-header-actions { gap: 0.35rem; }
+  .site-header-actions .header-btn-secondary,
+  .site-header-actions .header-btn-primary { padding-inline: 9px; font-size: 12px; }
+  .dark-mode-toggle-btn { width: 36px; height: 36px; }
 }

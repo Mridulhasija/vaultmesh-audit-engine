@@ -1,7 +1,14 @@
 {
+  "darkMode": "class",
   "theme": {
     "extend": {
       "colors": {
+        "neon": {
+          "DEFAULT": "#00ff88",
+          "bright": "#05f178",
+          "dark": "#00b359",
+          "glow": "rgba(0, 255, 136, 0.35)"
+        },
         "primary": {
           "DEFAULT": "#173f35",
           "50": "#f3f7f4",
